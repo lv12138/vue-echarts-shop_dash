@@ -1,0 +1,76 @@
+<template>
+  <div class="com-page">
+    <TrendCom></TrendCom>
+  </div>
+</template>
+
+<script>
+import TrendCom from '@/components/TrendCom'
+export default {
+  name: 'TrendPage',
+  components: { TrendCom }
+}
+</script>
+
+<style scoped>
+
+</style>
+
+
+
+<template>
+  <div class="com-container">{{ jsonData }}
+    <div class="com-chart" ref="trend-ref">
+    </div>
+  </div>
+</template>
+
+<script>
+import 'echarts/theme/chalk'
+export default {
+  name: 'TrendCom',
+  data () {
+    return {
+      chartInstance: null,
+      jsonData: null
+    }
+  },
+  mounted () {
+    this.initChart()
+    this.getChartData()
+    window.addEventListener('resize', this.screenAdapter)
+    this.screenAdapter()
+  },
+  destroyed () {
+    window.removeEventListener('resize', this.screenAdapter)
+  },
+  methods: {
+    initChart () {
+      this.chartInstance = this.$echarts.init(this.$refs['trend-ref'], 'chalk')
+      const initOption = {}
+      this.chartInstance.setOption(initOption)
+    },
+    async getChartData () {
+      await this.$axios.get('trend').then(res => {
+        this.jsonData = res.data
+        this.updateChart()
+      })
+    },
+    updateChart () {
+      const dataOption = {}
+      this.chartInstance.setOption(dataOption)
+    },
+    screenAdapter () {
+      const adapterOption = {}
+      this.chartInstance.setOption(adapterOption)
+      this.chartInstance.resize()
+    }
+  }
+}
+</script>
+
+<style lang="less" scoped>
+
+</style>
+
+
