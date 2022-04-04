@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import 'echarts/theme/chalk'
 export default {
   name: 'TrendCom',
   data () {

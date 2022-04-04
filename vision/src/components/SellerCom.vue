@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import 'echarts/theme/chalk'
 export default {
   name: 'SellerCom',
   data () {
