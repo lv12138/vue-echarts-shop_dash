@@ -84,7 +84,8 @@ export default {
           }
         },
         legend: {
-          top: '10%',
+          top: '5%',
+          right: '3%',
           icon: 'circle'
         },
         xAxis: {
