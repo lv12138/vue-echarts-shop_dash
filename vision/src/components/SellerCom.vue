@@ -131,9 +131,9 @@ export default {
       const adapterOption = {
         title: {
           textStyle: {
-            fontStyle: 'italic',
-            fontSize: titleFontSize / 1.5,
-            fontWeight: 'bolder'
+            // fontStyle: 'italic',
+            fontSize: titleFontSize / 1.5
+            // fontWeight: 'bolder'
           }
         },
         tooltip: {

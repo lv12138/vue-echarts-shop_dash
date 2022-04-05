@@ -76,12 +76,12 @@ export default {
           containLabel: true
         },
         tooltip: {
-          trigger: 'axis',
+          trigger: 'axis'
           // backgroundColor: '#222733',
-          backgroundColor: 'rgba(34,39,51,0.7)',
-          textStyle: {
-            color: 'white'
-          }
+          // backgroundColor: 'rgba(34,39,51,0.7)',
+          // textStyle: {
+          //   color: 'white'
+          // }
         },
         legend: {
           top: '5%',
