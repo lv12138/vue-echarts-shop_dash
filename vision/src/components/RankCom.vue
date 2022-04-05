@@ -74,13 +74,14 @@ export default {
       this.chartInstance.setOption(initOption)
       this.chartInstance.on('mouseover', () => { clearInterval(this.timerId) })
       this.chartInstance.on('mouseout', () => { this.startInterval() })
+      // this.chartInstance.on('dataZoom', (arg) => {
+      //   console.log(arg)
+      // })
     },
     async getChartData () {
       await this.$axios.get('rank').then(res => {
         this.jsonData = res.data
-        // console.log(res.data)
         this.jsonData.sort((a, b) => { return b.value - a.value })
-        console.log(this.jsonData.length)
         this.updateChart()
         this.startInterval()
       })
@@ -97,11 +98,22 @@ export default {
         xAxis: {
           data: regionName
         },
-        dataZoom: {
-          show: false,
-          startValue: this.startValue,
-          endValue: this.endValue
-        },
+        dataZoom: [
+          {
+            id: 'dataZoomSlider',
+            type: 'slider',
+            show: false,
+            startValue: this.startValue,
+            endValue: this.endValue
+          },
+          {
+            id: 'dataZoomInside',
+            type: 'inside',
+            filterMode: 'filter',
+            zoomLock: true,
+            orient: 'horizontal'
+          }
+        ],
         series: {
           data: regionValue,
           itemStyle: {
