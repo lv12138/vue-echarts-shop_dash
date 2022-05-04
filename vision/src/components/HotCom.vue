@@ -95,7 +95,6 @@ export default {
     async getData () {
       await this.$axios.get('hotproduct').then(res => {
         this.jsonData = res.data
-        // console.log(this.jsonData)
         this.updateChart()
       })
     },
